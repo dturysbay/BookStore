@@ -264,4 +264,17 @@ public class DBConnection {
 
         return user;
     }
+
+    public static void registerUser(User user){
+        try{
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (full_name,email,password) VALUES (?,?,?)");
+            statement.setString(1,user.getFullName());
+            statement.setString(2,user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

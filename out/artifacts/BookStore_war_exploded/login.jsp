@@ -44,6 +44,8 @@
                            <button class="btn btn-success">Sign In</button>
                        </div>
                    </div>
+                    <div ></div>
+                   <h6 class="mt-5 text-center">Don`t have an account? <span><a href="/register"> Sign Up</a></span></h6>
                </form>
            </div>
        </div>
