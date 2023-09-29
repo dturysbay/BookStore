@@ -73,21 +73,23 @@
               <textarea class="form-control" readonly rows="10"><%=book.getDescription()%></textarea>
             </div>
           </div>
+            <%
+                if(currentUser!=null){
+            %>
+                <div class="row mt-3">
+                  <div class="col-12">
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editBook">
+                          Edit Book
+                      </button>
 
-            <div class="row mt-3">
-              <div class="col-12">
-                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editBook">
-                      Edit Book
-                  </button>
-
-                  <button type="button" class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteBook">
-                      Delete Book
-                  </button>
-              </div>
-            </div>
+                      <button type="button" class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteBook">
+                          Delete Book
+                      </button>
+                  </div>
+                </div>
 
             <!--Delete Book Modal -->
-            <div class="modal fade" id="deleteBook" tabindex="-1" aria-labelledby="deleteBookModal" aria-hidden="true">
+                <div class="modal fade" id="deleteBook" tabindex="-1" aria-labelledby="deleteBookModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form action="/delete-book" method="post">
@@ -109,7 +111,7 @@
             </div>
 
             <!--Edit Book Modal -->
-            <div class="modal fade" id="editBook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="editBook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -218,6 +220,10 @@
                     </div>
                 </div>
             </div>
+
+            <%
+                }
+            %>
 
         </div>
       </div>

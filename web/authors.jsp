@@ -12,11 +12,14 @@
 
     <div class="row mt-3">
       <div class="col-12">
-        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addAuthor">
-          + Add Author
-        </button>
+        <%
+          if(currentUser!=null){
+        %>
+          <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addAuthor">
+            + Add Author
+          </button>
 
-        <div class="modal fade" id="addAuthor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="addAuthor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
@@ -74,6 +77,9 @@
             </div>
           </div>
         </div>
+        <%
+          }
+        %>
       </div>
     </div>
 

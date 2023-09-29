@@ -1,25 +1,22 @@
 package book_store.servlets;
 
-import book_store.db.DBConnection;
-import book_store.db.DBManager;
 import book_store.db.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(value = "/delete-book")
-public class DeleteBookServlet extends HttpServlet {
+@WebServlet(value = "/profile")
+public class ProfileServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User currentUser = (User)request.getSession().getAttribute("currentUser");
         if(currentUser!=null){
-            int id = Integer.parseInt(request.getParameter("book_id"));
-            DBConnection.deleteBook(id);
-            response.sendRedirect("/");
+            request.getRequestDispatcher("/profile.jsp").forward(request,response);
         }else{
             response.sendRedirect("/login");
         }

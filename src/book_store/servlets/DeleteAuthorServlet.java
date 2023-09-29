@@ -1,6 +1,7 @@
 package book_store.servlets;
 
 import book_store.db.DBConnection;
+import book_store.db.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,8 +14,11 @@ import java.io.IOException;
 public class DeleteAuthorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("author_id"));
-        DBConnection.deleteAuthor(id);
-        response.sendRedirect("/authors");
+        User currentUser = (User)request.getSession().getAttribute("currentUser");
+        if(currentUser!=null) {
+            int id = Integer.parseInt(request.getParameter("author_id"));
+            DBConnection.deleteAuthor(id);
+            response.sendRedirect("/authors");
+        }
     }
 }
