@@ -44,7 +44,7 @@
 
                    <div class="row mt-3">
                        <div class="col-12">
-                           <button class="btn btn-success">Sign Ip</button>
+                           <button class="btn btn-success">Sign Up</button>
                        </div>
                    </div>
                     <div ></div>
