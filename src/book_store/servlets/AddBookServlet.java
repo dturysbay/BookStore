@@ -23,21 +23,16 @@ public class AddBookServlet extends HttpServlet {
         String description = request.getParameter("book_description");
         Double bookPrice = Double.parseDouble(price);
 
-
-
         Author author = DBConnection.getAuthor(authorId);
         if(author != null){
             Book book = new Book();
             book.setName(name);
-
             book.setGenre(genre);
             book.setPrice(bookPrice);
             book.setDescription(description);
             book.setAuthor(author);
             DBConnection.addBook(book);
         }
-
-
 
         response.sendRedirect("/");
     }

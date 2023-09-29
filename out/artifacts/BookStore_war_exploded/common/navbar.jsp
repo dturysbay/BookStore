@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/add-book-page">Add Book</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/authors">Authors</a>
+          </li>
         </ul>
       </div>
     </div>

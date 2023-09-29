@@ -100,8 +100,6 @@ public class DBConnection {
                 author.setFirst_name(resultSet.getString("first_name"));
                 author.setLast_name(resultSet.getString("last_name"));
                 author.setInstagram(resultSet.getString("instagram"));
-
-
                 book.setAuthor(author);
             }
 
@@ -130,7 +128,6 @@ public class DBConnection {
             statement.setDouble(4,book.getPrice());
             statement.setString(5,book.getDescription());
             statement.setInt(6,book.getId());
-
             statement.executeUpdate();
             statement.close();
         }catch (Exception e){
@@ -145,10 +142,8 @@ public class DBConnection {
                     "DELETE FROM books WHERE id = ?"
             );
             statement.setInt(1,id);
-
             statement.executeUpdate();
             statement.close();
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -171,9 +166,7 @@ public class DBConnection {
 
                 authors.add(author);
             }
-
             statement.close();
-
         }catch (Exception e){
 
         }
@@ -201,5 +194,50 @@ public class DBConnection {
         }
 
         return author;
+    }
+
+    public static void addAuthor(Author author){
+        try{
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO authors (first_name,last_name,instagram) " +
+                        "VALUES (?,?,?)");
+
+            statement.setString(1,author.getFirst_name());
+            statement.setString(2,author.getLast_name());
+            statement.setString(3,author.getInstagram());
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteAuthor(int id){
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM authors WHERE id = ?");
+            statement.setInt(1,id);
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateAuthor(Author author){
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE authors " +
+                    "SET first_name = ?, " +
+                    "last_name = ?, " +
+                    "instagram = ?" +
+                    "WHERE id = ?");
+            statement.setString(1,author.getFirst_name());
+            statement.setString(2,author.getLast_name());
+            statement.setString(3,author.getInstagram());
+            statement.setInt(4,author.getId());
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
